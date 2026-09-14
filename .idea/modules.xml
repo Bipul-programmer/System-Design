@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Builder_Pattern/Builder_Pattern.iml" filepath="$PROJECT_DIR$/Builder_Pattern/Builder_Pattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Factory_Design/Factory_Design.NotificationService.java.iml" filepath="$PROJECT_DIR$/Factory_Design/Factory_Design.NotificationService.java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Singleton Pattern/Singleton Pattern.iml" filepath="$PROJECT_DIR$/Singleton Pattern/Singleton Pattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/System Design.iml" filepath="$PROJECT_DIR$/.idea/System Design.iml" />
+    </modules>
+  </component>
+</project>

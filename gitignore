@@ -1,0 +1,16 @@
+# IntelliJ
+.idea/
+*.iml
+
+# macOS
+.DS_Store
+
+# Build
+target/
+out/
+
+# Maven
+*.class
+
+# Environment / secrets
+.env
