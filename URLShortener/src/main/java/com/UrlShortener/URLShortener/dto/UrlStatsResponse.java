@@ -11,11 +11,12 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateUrlResponse {
+public class UrlStatsResponse {
     private String shortCode;
     private String originalUrl;
     private String shortUrl;
     private LocalDateTime createdAt;
     private LocalDateTime expiresAt;
     private Long clickCount;
+    private boolean isExpired;
 }

@@ -1,10 +1,12 @@
 package com.UrlShortener.URLShortener.strategy;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.security.SecureRandom;
 
 @Component("randomShortCodeStrategy")
+@Primary
 public class RandomShortCodeStrategy implements ShortCodeStrategy {
 
     private static final String CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

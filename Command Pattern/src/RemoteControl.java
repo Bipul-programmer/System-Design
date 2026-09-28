@@ -1,4 +1,3 @@
-
 public class RemoteControl {
     private Command command;
 

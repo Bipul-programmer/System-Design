@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "urls")
+@Table(name = "urls", indexes = {
+    @Index(name = "idx_urls_short_code", columnList = "short_code", unique = true)
+})
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,7 +23,7 @@ public class Url {
     @Column(name = "original_url", nullable = false, columnDefinition = "TEXT")
     private String originalUrl;
 
-    @Column(name = "short_code", nullable = false, unique = true, length = 10)
+    @Column(name = "short_code", nullable = false, unique = true, length = 50)
     private String shortCode;
 
     @Column(name = "created_at", nullable = false)
@@ -40,43 +42,33 @@ public class Url {
         this.clickCount = 0L;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getOriginalUrl() {
-        return originalUrl;
-    }
-
-    public void setOriginalUrl(String originalUrl) {
+    public Url(String originalUrl, String shortCode, LocalDateTime expiresAt) {
         this.originalUrl = originalUrl;
-    }
-
-    public String getShortCode() {
-        return shortCode;
-    }
-
-    public void setShortCode(String shortCode) {
         this.shortCode = shortCode;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getExpiresAt() {
-        return expiresAt;
-    }
-
-    public void setExpiresAt(LocalDateTime expiresAt) {
         this.expiresAt = expiresAt;
+        this.createdAt = LocalDateTime.now();
+        this.clickCount = 0L;
     }
 
-    public Long getClickCount() {
-        return clickCount;
+    @PrePersist
+    public void prePersist() {
+        if (this.createdAt == null) {
+            this.createdAt = LocalDateTime.now();
+        }
+        if (this.clickCount == null) {
+            this.clickCount = 0L;
+        }
+    }
+
+    public boolean isExpired() {
+        return expiresAt != null && expiresAt.isBefore(LocalDateTime.now());
     }
 
     public void incrementClickCount() {
-        this.clickCount++;
+        if (this.clickCount == null) {
+            this.clickCount = 1L;
+        } else {
+            this.clickCount++;
+        }
     }
 }
